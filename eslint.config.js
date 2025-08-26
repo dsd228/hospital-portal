@@ -1,42 +1,36 @@
 // eslint.config.js
-import tseslint from '@ts-eslint/config';
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+import typescript from '@typescript-eslint/eslint-plugin';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
 
-export default tseslint.config([
-  // Ignorar dist y node_modules
+export default [
   {
-    ignores: ['dist', 'node_modules'],
-  },
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Reglas recomendadas de TypeScript con chequeo de tipos
-      ...tseslint.configs.recommendedTypeChecked,
-      // Reglas estrictas de TypeScript
-      ...tseslint.configs.strictTypeChecked,
-      // Reglas estilísticas
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Reglas específicas de React
-      reactX.configs['recommended-typescript'],
-      reactDom.configs.recommended,
-    ],
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
+      parser: '@typescript-eslint/parser',
       parserOptions: {
-        // tsconfig para lint con chequeo de tipos
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
+        project: './tsconfig.json',
+        tsconfigRootDir: new URL('.', import.meta.url).pathname,
+        ecmaVersion: 2020,
+        sourceType: 'module',
+        ecmaFeatures: { jsx: true },
       },
     },
+    plugins: {
+      '@typescript-eslint': typescript,
+      react,
+      'react-hooks': reactHooks,
+    },
     rules: {
-      // Aquí podés agregar reglas personalizadas
-      // Ejemplo:
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'react/prop-types': 'off',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      '@typescript-eslint/explicit-function-return-type': 'off',
-      '@typescript-eslint/consistent-type-imports': 'error',
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
   },
-]);
+];
