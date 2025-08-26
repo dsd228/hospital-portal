@@ -9,6 +9,12 @@ import Notificaciones from './pages/Notificaciones';
 import AgendarTurno from './pages/AgendarTurno';
 import './styles/globals.css';
 import './App.css';
+import AppRouter from "./router/AppRouter";
+
+export default function App() {
+  return <AppRouter />;
+}
+
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
