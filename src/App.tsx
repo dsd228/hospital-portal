@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navigation from './components/Navigation';
 import Login from './components/Login';
 import Dashboard from './pages/Dashboard';
+import Especialistas from './pages/Especialistas';
+import FAQ from './pages/FAQ';
+import Notificaciones from './pages/Notificaciones';
+import AgendarTurno from './pages/AgendarTurno';
 import './styles/globals.css';
 import './App.css';
 
@@ -56,11 +60,12 @@ function App() {
         <main className="app-main">
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/especialistas" element={<div>Especialistas (Coming Soon)</div>} />
+            <Route path="/especialistas" element={<Especialistas />} />
             <Route path="/turnos" element={<div>Turnos (Coming Soon)</div>} />
+            <Route path="/turnos/nuevo" element={<AgendarTurno />} />
             <Route path="/estudios" element={<div>Estudios (Coming Soon)</div>} />
-            <Route path="/faq" element={<div>FAQ (Coming Soon)</div>} />
-            <Route path="/notificaciones" element={<div>Notificaciones (Coming Soon)</div>} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/notificaciones" element={<Notificaciones />} />
             <Route path="/perfil" element={<div>Perfil (Coming Soon)</div>} />
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />

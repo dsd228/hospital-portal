@@ -1,0 +1,525 @@
+.agendar-turno-page {
+  padding: var(--spacing-2xl) 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: none;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.back-button:hover {
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.page-header h1 {
+  color: var(--primary-blue);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+}
+
+.booking-container {
+  background: var(--background-white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px var(--shadow-light);
+  overflow: hidden;
+}
+
+.progress-bar {
+  position: relative;
+  background: var(--background-light);
+  padding: var(--spacing-xl);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.step-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--border-light);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.progress-step.active .step-number {
+  background: var(--primary-blue);
+  color: white;
+}
+
+.step-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+  text-align: center;
+}
+
+.progress-step.active .step-label {
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  background: var(--primary-blue);
+  transition: width var(--transition-normal);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.step-container {
+  padding: var(--spacing-3xl);
+}
+
+.step-content {
+  text-align: center;
+}
+
+.step-content h2 {
+  color: var(--text-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.step-content p {
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.option-card {
+  background: none;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.option-card:hover {
+  border-color: var(--primary-blue);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--shadow-light);
+}
+
+.option-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.option-card h3 {
+  color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.option-card p {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.specialists-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  text-align: left;
+}
+
+.specialist-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  background: none;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.specialist-card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.specialist-card.selected {
+  border-color: var(--primary-blue);
+  background: var(--primary-blue-light);
+}
+
+.specialist-card img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.specialist-info h3 {
+  color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.experience {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.office {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.dates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--spacing-md);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.date-card {
+  background: none;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.date-card:hover {
+  border-color: var(--primary-blue);
+  transform: translateY(-2px);
+}
+
+.date-card.selected {
+  border-color: var(--primary-blue);
+  background: var(--primary-blue);
+  color: white;
+}
+
+.date-day {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: var(--spacing-xs);
+}
+
+.date-month {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.date-weekday {
+  font-size: var(--font-size-xs);
+  opacity: 0.8;
+}
+
+.times-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--spacing-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.time-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  background: none;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: 600;
+}
+
+.time-card:hover {
+  border-color: var(--primary-blue);
+  background: var(--primary-blue-light);
+}
+
+.time-card.selected {
+  border-color: var(--primary-blue);
+  background: var(--primary-blue);
+  color: white;
+}
+
+.confirmation {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.confirmation-icon {
+  color: var(--status-success);
+  margin-bottom: var(--spacing-xl);
+}
+
+.appointment-summary {
+  background: var(--background-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-xl) 0;
+  text-align: left;
+}
+
+.summary-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.summary-item svg {
+  color: var(--primary-blue);
+  margin-top: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+.summary-item strong {
+  color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.summary-item p {
+  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+  margin: 0;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  margin-top: var(--spacing-xl);
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xl);
+  border-top: 1px solid var(--border-light);
+  background: var(--background-light);
+}
+
+.step-indicator {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.navigation-buttons .btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.navigation-buttons .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .agendar-turno-page {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+
+  .page-header {
+    gap: var(--spacing-md);
+  }
+
+  .page-header h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .progress-bar {
+    padding: var(--spacing-lg);
+  }
+
+  .progress-steps {
+    gap: var(--spacing-sm);
+  }
+
+  .step-number {
+    width: 2rem;
+    height: 2rem;
+    font-size: var(--font-size-sm);
+  }
+
+  .step-label {
+    font-size: var(--font-size-xs);
+  }
+
+  .step-container {
+    padding: var(--spacing-xl);
+  }
+
+  .step-content h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .option-card {
+    padding: var(--spacing-lg);
+  }
+
+  .specialist-card {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-md);
+  }
+
+  .dates-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .times-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .confirmation-actions {
+    flex-direction: column;
+  }
+
+  .navigation-buttons {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  .step-container {
+    padding: var(--spacing-lg);
+  }
+
+  .dates-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .times-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dark mode */
+[data-theme="dark"] .booking-container {
+  background: var(--dark-surface);
+}
+
+[data-theme="dark"] .progress-bar {
+  background: var(--dark-background);
+  border-bottom-color: var(--dark-border);
+}
+
+[data-theme="dark"] .navigation-buttons {
+  background: var(--dark-background);
+  border-top-color: var(--dark-border);
+}
+
+[data-theme="dark"] .appointment-summary {
+  background: var(--dark-background);
+}
+
+[data-theme="dark"] .option-card,
+[data-theme="dark"] .specialist-card,
+[data-theme="dark"] .date-card,
+[data-theme="dark"] .time-card {
+  border-color: var(--dark-border);
+}
+
+[data-theme="dark"] .option-card:hover,
+[data-theme="dark"] .specialist-card:hover,
+[data-theme="dark"] .date-card:hover,
+[data-theme="dark"] .time-card:hover {
+  border-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .specialist-card.selected {
+  background: rgba(0, 86, 179, 0.2);
+}
+
+[data-theme="dark"] .back-button {
+  border-color: var(--dark-border);
+  color: var(--dark-text-secondary);
+}
+
+[data-theme="dark"] .back-button:hover {
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
