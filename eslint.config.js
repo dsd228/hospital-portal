@@ -1,13 +1,14 @@
 // eslint.config.js
-import typescript from '@typescript-eslint/eslint-plugin';
-import react from 'eslint-plugin-react';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 
 export default [
   {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
-      parser: '@typescript-eslint/parser',
+      parser: tsParser,
       parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: new URL('.', import.meta.url).pathname,
@@ -17,8 +18,8 @@ export default [
       },
     },
     plugins: {
-      '@typescript-eslint': typescript,
-      react,
+      '@typescript-eslint': tsPlugin,
+      react: reactPlugin,
       'react-hooks': reactHooks,
     },
     rules: {
