@@ -1,90 +1,69 @@
-# 🏥 Portal de Pacientes - Hospital Privado CMC S.A.
+# React + TypeScript + Vite
 
-> **Proyecto UX/UI Conceptual**  
-> Modernización del portal digital del [Hospital Privado CMC](https://hospitalprivado.com.ar/) para mejorar la experiencia del paciente, la autogestión y la accesibilidad.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-![Proyecto UX/UI](https://img.shields.io/badge/Proyecto-UX_UI_Conceptual-blue)
-![Metodología](https://img.shields.io/badge/Metodología-Scrum_&_Design_Thinking-purple)
-![Estado](https://img.shields.io/badge/Estado-Prototipo_Conceptual-green)
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🎯 Objetivo
+## Expanding the ESLint configuration
 
-Diseñar un portal de pacientes más **intuitivo, accesible y funcional** que permita a los usuarios gestionar su salud de forma autónoma, con foco en:
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- ✅ Agendamiento de turnos online  
-- ✅ Acceso a estudios médicos y historia clínica  
-- ✅ Información clara para pacientes y familiares  
-- ✅ Experiencia optimizada para pacientes internacionales  
-- ✅ Diseño centrado en el usuario (User-Centered Design)
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-Este prototipo es una propuesta de mejora del portal actual, manteniendo la identidad institucional y destacando el sello de calidad **JCI (Joint Commission International)**.
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
----
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-## 🧩 Funcionalidades Clave
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-| Sección | Descripción |
-|--------|-------------|
-| **Lo más buscado** | Accesos rápidos a servicios esenciales: información para pacientes, profesionales y publicaciones médicas. |
-| **Guía del Paciente y la Familia** | Recurso visual y práctico para orientar a los pacientes durante su estadía. |
-| **Pacientes Internacionales** | Mensaje claro de bienvenida y apoyo para pacientes extranjeros, destacando acuerdos con aseguradoras internacionales. |
-| **¿Por qué elegirnos?** | Sección de valor institucional: excelencia profesional, tecnología y atención centrada en el paciente. |
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
----
-
-## 🛠️ Metodologías Aplicadas
-
-- **Design Thinking**  
-  Fase de empatía con pacientes reales, definición de necesidades, ideación, prototipado y testing.
-
-- **Scrum**  
-  Gestión ágil del proyecto en sprints de 1 semana, con roles definidos (Product Owner, Scrum Master) y entregas incrementales.
-
-- **Design Sprint (5 días)**  
-  - Día 1: Mapa del journey del paciente  
-  - Día 2: Ideación y sketching  
-  - Día 3: Decisión y wireframes  
-  - Día 4: Prototipo interactivo  
-  - Día 5: Test de usabilidad
-
----
-
-## 🎨 Entregables del Proyecto
-
-- [x] Investigación UX (encuestas, journey mapping)  
-- [x] Wireframes (bajo y alto detalle)  
-- [x] Mockups en alta fidelidad (Figma)  
-- [x] Prototipo interactivo (web)  
-- [x] UI Kit (tipografía, paleta de colores, componentes)  
-- [x] Test de usabilidad (informe resumido)  
-- [x] Documentación técnica y funcional
-
----
-
-## 🧰 Herramientas Utilizadas
-
-| Área | Herramientas |
-|------|------------|
-| Diseño UX/UI | Figma, Adobe Illustrator, Photoshop |
-| Prototipado | Figma, Adobe XD |
-| Desarrollo (conceptual) | HTML5, CSS3, JavaScript, React |
-| Gestión | GitHub, Jira, Trello |
-| Metodologías | Scrum, Design Thinking, Design Sprint |
-
----
-
-## 🖼️ Vista Previa del Prototipo
-
-![Vista del prototipo](https://hospitalprivado.com.ar/frontend/images/home-GP-01.png)
-
-> *Imagen inspirada en el contenido real del sitio oficial. El prototipo mejora la jerarquía visual, accesibilidad y navegación.*
-
----
-
-## 🔧 Cómo usar este repositorio
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/dsd228/hospital-portal.git
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

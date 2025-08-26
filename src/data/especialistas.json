@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nombre": "Dr. Carlos Martínez",
+    "especialidad": "Cardiología",
+    "disponible": true,
+    "experiencia": "15 años",
+    "foto": "https://via.placeholder.com/150/4CAF50/FFFFFF?text=CM",
+    "horarios": ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"],
+    "diasDisponibles": ["lunes", "martes", "miércoles", "viernes"],
+    "consultorio": "A-201",
+    "biografia": "Especialista en cardiología intervencionista con amplia experiencia en procedimientos cardiovasculares."
+  },
+  {
+    "id": 2,
+    "nombre": "Dra. Ana García",
+    "especialidad": "Dermatología",
+    "disponible": true,
+    "experiencia": "12 años",
+    "foto": "https://via.placeholder.com/150/2196F3/FFFFFF?text=AG",
+    "horarios": ["08:30", "09:30", "14:30", "15:30", "16:30"],
+    "diasDisponibles": ["lunes", "martes", "jueves", "viernes"],
+    "consultorio": "B-105",
+    "biografia": "Dermatóloga especializada en dermatología estética y tratamiento de enfermedades de la piel."
+  },
+  {
+    "id": 3,
+    "nombre": "Dr. Roberto Silva",
+    "especialidad": "Neurología",
+    "disponible": true,
+    "experiencia": "20 años",
+    "foto": "https://via.placeholder.com/150/FF9800/FFFFFF?text=RS",
+    "horarios": ["09:00", "09:30", "10:00", "15:00", "15:30", "16:00"],
+    "diasDisponibles": ["lunes", "miércoles", "jueves", "viernes"],
+    "consultorio": "C-302",
+    "biografia": "Neurólogo con especialización en trastornos del movimiento y enfermedades neurodegenerativas."
+  },
+  {
+    "id": 4,
+    "nombre": "Dra. María Rodríguez",
+    "especialidad": "Ginecología",
+    "disponible": true,
+    "experiencia": "18 años",
+    "foto": "https://via.placeholder.com/150/E91E63/FFFFFF?text=MR",
+    "horarios": ["08:00", "09:00", "14:00", "15:00", "16:00", "17:00"],
+    "diasDisponibles": ["martes", "miércoles", "jueves", "viernes"],
+    "consultorio": "D-210",
+    "biografia": "Ginecóloga especializada en salud reproductiva y medicina preventiva para la mujer."
+  },
+  {
+    "id": 5,
+    "nombre": "Dr. Luis Fernández",
+    "especialidad": "Traumatología",
+    "disponible": false,
+    "experiencia": "22 años",
+    "foto": "https://via.placeholder.com/150/9C27B0/FFFFFF?text=LF",
+    "horarios": [],
+    "diasDisponibles": [],
+    "consultorio": "E-115",
+    "biografia": "Traumatólogo especializado en cirugía de columna y articulaciones."
+  },
+  {
+    "id": 6,
+    "nombre": "Dra. Carmen López",
+    "especialidad": "Pediatría",
+    "disponible": true,
+    "experiencia": "14 años",
+    "foto": "https://via.placeholder.com/150/00BCD4/FFFFFF?text=CL",
+    "horarios": ["08:00", "09:00", "10:00", "14:00", "15:00"],
+    "diasDisponibles": ["lunes", "martes", "miércoles", "jueves", "viernes"],
+    "consultorio": "F-120",
+    "biografia": "Pediatra especializada en desarrollo infantil y medicina preventiva pediátrica."
+  }
+]

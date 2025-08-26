@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "pregunta": "¿Cómo puedo agendar una cita médica?",
+    "respuesta": "Puede agendar una cita a través de nuestro portal online seleccionando la especialidad, el médico de su preferencia, fecha y horario disponible. También puede llamar a nuestro centro de atención al +54 11 4567-8900.",
+    "categoria": "Citas"
+  },
+  {
+    "id": 2,
+    "pregunta": "¿Qué documentos necesito para mi primera consulta?",
+    "respuesta": "Para su primera consulta necesita: documento de identidad, obra social o prepaga (si corresponde), estudios previos relacionados con su consulta y lista de medicamentos que esté tomando actualmente.",
+    "categoria": "Primera consulta"
+  },
+  {
+    "id": 3,
+    "pregunta": "¿Cuánto tiempo antes debo llegar a mi cita?",
+    "respuesta": "Recomendamos llegar 15 minutos antes de su cita para completar los procesos de admisión. Para estudios especiales, puede ser necesario llegar con mayor anticipación según las instrucciones específicas.",
+    "categoria": "Citas"
+  },
+  {
+    "id": 4,
+    "pregunta": "¿Cómo accedo a mis resultados de estudios?",
+    "respuesta": "Los resultados están disponibles en su portal de paciente dentro de las 24-48 horas posteriores al estudio. Recibirá una notificación por email cuando estén listos. También puede retirarlos en persona en nuestras oficinas.",
+    "categoria": "Resultados"
+  },
+  {
+    "id": 5,
+    "pregunta": "¿Puedo cancelar o reprogramar mi cita?",
+    "respuesta": "Sí, puede cancelar o reprogramar su cita hasta 24 horas antes a través del portal online o llamando a nuestro centro de atención. Las cancelaciones con menos de 24 horas de anticipación pueden tener un cargo.",
+    "categoria": "Citas"
+  },
+  {
+    "id": 6,
+    "pregunta": "¿Qué obras sociales y prepagas aceptan?",
+    "respuesta": "Trabajamos con las principales obras sociales y prepagas del país. Para verificar su cobertura específica, por favor consulte en admisión o llame a nuestro centro de atención antes de su cita.",
+    "categoria": "Facturación"
+  },
+  {
+    "id": 7,
+    "pregunta": "¿Dónde puedo estacionar?",
+    "respuesta": "Contamos con estacionamiento gratuito para pacientes en el subsuelo del hospital. El acceso es por la entrada principal presentando su ticket de cita. También hay estacionamiento público en las calles aledañas.",
+    "categoria": "Servicios"
+  },
+  {
+    "id": 8,
+    "pregunta": "¿Tienen servicio de emergencias 24 horas?",
+    "respuesta": "Sí, nuestro servicio de emergencias está disponible las 24 horas, los 7 días de la semana. Para emergencias graves, diríjase directamente a nuestro servicio de urgencias o llame al 107.",
+    "categoria": "Servicios"
+  }
+]

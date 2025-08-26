@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "titulo": "Recordatorio de turno",
+    "mensaje": "Su cita con Dr. Carlos Martínez está programada para mañana a las 10:00 AM. Por favor, llegue 15 minutos antes.",
+    "fecha": "2025-01-19",
+    "tipo": "recordatorio",
+    "leido": false,
+    "prioridad": "media"
+  },
+  {
+    "id": 2,
+    "titulo": "Resultados disponibles",
+    "mensaje": "Los resultados de su análisis de sangre del 16/01 ya están disponibles en su portal de paciente.",
+    "fecha": "2025-01-17",
+    "tipo": "resultado",
+    "leido": false,
+    "prioridad": "alta"
+  },
+  {
+    "id": 3,
+    "titulo": "Cambio de horario",
+    "mensaje": "Su cita del 22/01 con Dra. Ana García se ha reprogramado de 15:30 a 14:30. Confirme su asistencia.",
+    "fecha": "2025-01-16",
+    "tipo": "cambio",
+    "leido": true,
+    "prioridad": "alta"
+  },
+  {
+    "id": 4,
+    "titulo": "Nuevo servicio disponible",
+    "mensaje": "Ahora puede agendar sus citas online a través de nuestro portal. ¡Pruebe esta nueva funcionalidad!",
+    "fecha": "2025-01-15",
+    "tipo": "informativo",
+    "leido": true,
+    "prioridad": "baja"
+  },
+  {
+    "id": 5,
+    "titulo": "Preparación para estudio",
+    "mensaje": "Recuerde las instrucciones para su Resonancia Magnética del 23/01: retirar objetos metálicos y llegar 30 min antes.",
+    "fecha": "2025-01-14",
+    "tipo": "preparacion",
+    "leido": false,
+    "prioridad": "media"
+  }
+]

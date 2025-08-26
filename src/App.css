@@ -1,0 +1,15 @@
+.app {
+  min-height: 100vh;
+  background-color: var(--background-light);
+}
+
+.app-main {
+  padding-top: 4rem; /* Navigation height */
+  min-height: 100vh;
+}
+
+@media (max-width: 480px) {
+  .app-main {
+    padding-top: 3.5rem;
+  }
+}

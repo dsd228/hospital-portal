@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "tipo": "Electrocardiograma",
+    "fecha": "2025-01-18",
+    "estado": "pendiente",
+    "medico": "Dr. Carlos Martínez",
+    "instrucciones": "Presentarse en ayunas de 8 horas",
+    "ubicacion": "Piso 2 - Sala de Estudios"
+  },
+  {
+    "id": 2,
+    "tipo": "Resonancia Magnética",
+    "fecha": "2025-01-23",
+    "estado": "programado",
+    "medico": "Dr. Roberto Silva",
+    "instrucciones": "Retirar objetos metálicos, llegar 30 min antes",
+    "ubicacion": "Subsuelo - Diagnóstico por Imágenes"
+  },
+  {
+    "id": 3,
+    "tipo": "Análisis de Sangre",
+    "fecha": "2025-01-16",
+    "estado": "completado",
+    "medico": "Dra. Ana García",
+    "instrucciones": "Ayuno de 12 horas",
+    "ubicacion": "Piso 1 - Laboratorio",
+    "resultado": "Resultados disponibles en portal"
+  },
+  {
+    "id": 4,
+    "tipo": "Ecografía Abdominal",
+    "fecha": "2025-01-28",
+    "estado": "programado",
+    "medico": "Dra. María Rodríguez",
+    "instrucciones": "Beber 1 litro de agua 1 hora antes",
+    "ubicacion": "Piso 3 - Ecografías"
+  }
+]
