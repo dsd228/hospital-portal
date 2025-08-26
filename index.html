@@ -1,496 +1,179 @@
-```jsx
-import { Home, Calendar, FileText, User, Bell, Search, Menu, X, ChevronDown, ChevronUp, Clock, CheckCircle, Shield, Award } from 'lucide-react';
-
-const App = () => {
-  const [activeSection, setActiveSection] = useState('home');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [expandedFaq, setExpandedFaq] = useState(null);
-
-  const faqs = [
-    {
-      question: "¿Cómo agendo un turno online?",
-      answer: "Puedes agendar un turno fácilmente desde la sección 'Turnos' en tu portal de paciente. Selecciona la especialidad, el profesional y el horario disponible que mejor se adapte a tus necesidades."
-    },
-    {
-      question: "¿Cómo accedo a mis estudios médicos?",
-      answer: "Todos tus estudios médicos están disponibles en la sección 'Estudios' de tu portal. Puedes visualizarlos, descargarlos o compartirlos con otros profesionales de la salud."
-    },
-    {
-      question: "¿Qué información contiene mi historia clínica digital?",
-      answer: "Tu historia clínica digital incluye todos tus antecedentes médicos, diagnósticos, tratamientos, medicaciones, alergias y resultados de estudios, actualizados en tiempo real."
-    },
-    {
-      question: "¿Es seguro el portal de pacientes?",
-      answer: "Sí, nuestro portal cumple con los más altos estándares de seguridad y privacidad de datos médicos, incluyendo encriptación de extremo a extremo y autenticación de dos factores."
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital Privado CMC S.A. - Portal de Pacientes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
     }
-  ];
-
-  const services = [
-    {
-      icon: Calendar,
-      title: "Agenda de Turnos",
-      description: "Gestiona tus consultas médicas con facilidad, elige horarios disponibles y recibe recordatorios automáticos."
-    },
-    {
-      icon: FileText,
-      title: "Historia Clínica Digital",
-      description: "Accede a tu historia clínica completa desde cualquier dispositivo, con actualizaciones en tiempo real."
-    },
-    {
-      title: "Visor de Estudios",
-      description: "Consulta y descarga tus estudios médicos (radiografías, resonancias, análisis de laboratorio) en alta calidad."
-    },
-    {
-      icon: Bell,
-      title: "Notificaciones",
-      description: "Recibe alertas sobre resultados de estudios, próximos turnos y recomendaciones médicas personalizadas."
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
     }
-  ];
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #0056b3, #003d82);
+      color: white;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    header h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 1.8em;
+      margin-bottom: 30px;
+      color: #0056b3;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+    .service-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+    }
+    .service-card h3 {
+      color: #0056b3;
+      margin: 16px 0;
+      font-size: 1.3em;
+    }
+    .guide-card {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+    .guide-card img {
+      width: 120px;
+      margin-right: 20px;
+      border-radius: 8px;
+    }
+    .international-section {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      margin: 40px auto;
+      max-width: 900px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .international-section h3 {
+      color: #0056b3;
+      margin-bottom: 16px;
+      font-size: 1.8em;
+    }
+    .why-us {
+      text-align: center;
+      padding: 60px 20px;
+      background: #e7f3ff;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+    .btn {
+      display: inline-block;
+      background: #0056b3;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #2c3e50;
+      color: white;
+      border-radius: 12px;
+      margin-top: 40px;
+    }
+    .jci-badge {
+      font-weight: bold;
+      color: #4caf50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Hospital Privado CMC S.A.</h1>
+      <p>Portal de Pacientes — Tu salud, en tus manos</p>
+    </header>
 
-  const specialties = [
-    "Cardiología", "Dermatología", "Endocrinología", "Gastroenterología",
-    "Ginecología", "Neurología", "Oftalmología", "Oncología",
-    "Ortopedia", "Pediatría", "Psiquiatría", "Traumatología"
-  ];
+    <h2 class="section-title">Lo más buscado</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Información útil para el paciente</h3>
+        <p>Accede a toda la información necesaria para tu estadía y tratamiento.</p>
+        <a href="#" class="btn">Ver más</a>
+      </div>
 
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white shadow-lg sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-xl">HP</span>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">Hospital Privado CMC</h1>
-                <p className="text-sm text-blue-600 font-medium">Portal de Pacientes</p>
-              </div>
-            </div>
-            
-            <nav className="hidden md:flex space-x-8">
-              {['Inicio', 'Turnos', 'Estudios', 'Historia', 'Perfil'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => setActiveSection(item.toLowerCase())}
-                  className={`font-medium transition-colors duration-200 ${
-                    activeSection === item.toLowerCase()
-                      ? 'text-blue-600 border-b-2 border-blue-600 pb-1'
-                      : 'text-gray-700 hover:text-blue-600'
-                  }`}
-                >
-                  {item}
-                </button>
-              ))}
-            </nav>
+      <div class="service-card">
+        <h3>Profesionales de la salud</h3>
+        <p>Conoce a nuestros médicos especialistas y agenda tu consulta.</p>
+        <a href="#" class="btn">Ver profesionales</a>
+      </div>
 
-            <div className="flex items-center space-x-4">
-              <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200">
-                Iniciar Sesión
-              </button>
-              <button 
-                className="md:hidden"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden bg-white border-t border-gray-200">
-              <div className="px-4 py-2 space-y-2">
-                {['Inicio', 'Turnos', 'Estudios', 'Historia', 'Perfil'].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => {
-                      setActiveSection(item.toLowerCase());
-                      setMobileMenuOpen(false);
-                    }}
-                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="flex items-center mb-4">
-                <Shield className="text-blue-600 mr-2" />
-                <Award className="text-green-600" />
-                <span className="ml-2 text-sm font-medium text-gray-700">Acreditado JCI</span>
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Tu salud, en tus manos
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Accede a tu portal de paciente y gestiona tu salud con total autonomía. 
-                Turnos, estudios médicos e historia clínica digital, todo en un solo lugar.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 shadow-lg">
-                  Agendar Turno
-                </button>
-                <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-600 hover:text-white transition-all duration-200">
-                  Acceder al Portal
-                </button>
-              </div>
-
-              <div className="mt-8 flex items-center text-sm text-gray-600">
-                <CheckCircle className="text-green-500 mr-2" />
-                Experiencia 100% digital, segura y accesible
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
-                <div className="bg-gray-100 rounded-xl p-6 mb-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-gray-600">Último acceso</span>
-                    <span className="text-sm text-gray-500">Hoy, 09:28</span>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Turno próximo</span>
-                      <span className="font-medium">Cardiología - 15/03</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Estudios pendientes</span>
-                      <span className="font-medium text-blue-600">2 nuevos</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Mensajes</span>
-                      <span className="font-medium text-red-500">1 sin leer</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  {services.map((service, index) => (
-                    <button
-                      key={index}
-                      className="w-full flex items-center p-4 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors duration-200"
-                    >
-                      {service.icon && <service.icon className="text-blue-600 mr-3" />}
-                      <div className="text-left">
-                        <div className="font-medium text-gray-900">{service.title}</div>
-                        <div className="text-sm text-gray-600">{service.description}</div>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Servicios Digitales para Pacientes
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Una experiencia integral que pone tu salud en primer lugar, con tecnología de vanguardia 
-              y un enfoque centrado en el paciente.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Calendar,
-                title: "Agenda Inteligente",
-                description: "Sistema de turnos con recomendaciones personalizadas y horarios optimizados según tu disponibilidad.",
-                features: ["Horarios flexibles", "Recordatorios automáticos", "Reagendado fácil"]
-              },
-              {
-                icon: FileText,
-                title: "Historia Clínica Digital",
-                description: "Acceso completo a tu historia médica con actualizaciones en tiempo real y compartición segura.",
-                features: ["Antecedentes médicos", "Medicaciones", "Alergias", "Tratamientos"]
-              },
-              {
-                icon: Search,
-                title: "Buscador de Especialistas",
-                description: "Encuentra al profesional ideal con filtros avanzados por especialidad, ubicación y disponibilidad.",
-                features: ["Especialidades", "Opiniones de pacientes", "Biografía profesional"]
-              },
-              {
-                icon: Bell,
-                title: "Alertas Médicas",
-                description: "Notificaciones inteligentes sobre resultados, controles médicos y recomendaciones personalizadas.",
-                features: ["Resultados de estudios", "Controles programados", "Vacunación"]
-              }
-            ].map((service, index) => (
-              <div key={index} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                <service.icon className="text-blue-600 w-12 h-12 mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="text-green-500 w-4 h-4 mr-2 flex-shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Turno Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="grid lg:grid-cols-2">
-              <div className="p-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Agendá tu turno en 3 simples pasos
-                </h2>
-                
-                <div className="space-y-6">
-                  {[
-                    {
-                      step: "1",
-                      title: "Seleccioná especialidad",
-                      description: "Elige la especialidad médica que necesitas o busca directamente al profesional."
-                    },
-                    {
-                      step: "2",
-                      title: "Elegí fecha y horario",
-                      description: "Visualiza los horarios disponibles y selecciona el que mejor se adapte a tu agenda."
-                    },
-                    {
-                      step: "3",
-                      title: "Confirmá tu turno",
-                      description: "Recibe confirmación inmediata y recordatorios automáticos por correo y SMS."
-                    }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start">
-                      <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0 mt-1">
-                        {item.step}
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1">{item.title}</h3>
-                        <p className="text-gray-600">{item.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 p-4 bg-blue-50 rounded-xl">
-                  <div className="flex items-center">
-                    <Clock className="text-blue-600 mr-2 flex-shrink-0" />
-                    <p className="text-blue-800 text-sm">
-                      <strong>¡Importante!</strong> Los turnos pueden agendarse con hasta 30 días de anticipación.
-                    </p>
-                  </div>
-                </div>
-
-                <button className="mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 w-full">
-                  Comenzar ahora
-                </button>
-              </div>
-
-              <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8">
-                <div className="h-full flex flex-col">
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-6">Especialidades disponibles</h3>
-                    <div className="grid grid-cols-2 gap-3">
-                      {specialties.map((specialty, index) => (
-                        <div key={index} className="bg-white bg-opacity-20 text-white px-3 py-2 rounded-lg text-sm backdrop-blur-sm">
-                          {specialty}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="mt-8 text-center">
-                    <div className="inline-flex items-center bg-white bg-opacity-20 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm">
-                      <Shield className="mr-2" size={16} />
-                      Sistema 100% seguro y encriptado
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Características del Portal de Pacientes
-            </h2>
-            <p className="text-xl text-gray-600">
-              Diseñado para ofrecer la mejor experiencia digital en salud
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Accesibilidad Universal",
-                description: "Interfaz intuitiva compatible con lectores de pantalla y navegación por teclado. Diseño responsive para todos los dispositivos.",
-                metrics: [
-                  { label: "WCAG 2.1 AA", value: "Cumplido" },
-                  { label: "Contraste", value: "4.5:1" },
-                  { label: "Tamaño texto", value: "Ajustable" }
-                ]
-              },
-              {
-                title: "Seguridad Avanzada",
-                description: "Protección de datos médica con encriptación de extremo a extremo, autenticación de dos factores y cumplimiento de normativas.",
-                metrics: [
-                  { label: "Encriptación", value: "AES-256" },
-                  { label: "Autenticación", value: "2FA" },
-                  { label: "Auditorías", value: "Mensuales" }
-                ]
-              },
-              {
-                title: "Experiencia Personalizada",
-                description: "Recomendaciones inteligentes, recordatorios contextuales y contenido adaptado a tu historial médico y necesidades específicas.",
-                metrics: [
-                  { label: "Recomendaciones", value: "IA" },
-                  { label: "Notificaciones", value: "Personalizadas" },
-                  { label: "Interfaz", value: "Adaptable" }
-                ]
-              }
-            ].map((feature, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 border border-gray-100">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
-                
-                <div className="space-y-3">
-                  {feature.metrics.map((metric, metricIndex) => (
-                    <div key={metricIndex} className="flex justify-between items-center">
-                      <span className="text-sm text-gray-600">{metric.label}</span>
-                      <span className="text-sm font-medium text-blue-600">{metric.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Preguntas Frecuentes
-            </h2>
-            <p className="text-xl text-gray-600">
-              Resolvemos tus dudas sobre el uso del portal de pacientes
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
-                <button
-                  className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
-                  onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                >
-                  <span className="text-lg font-semibold text-gray-900">{faq.question}</span>
-                  {expandedFaq === index ? (
-                    <ChevronUp className="text-gray-500" />
-                  ) : (
-                    <ChevronDown className="text-gray-500" />
-                  )}
-                </button>
-                
-                {expandedFaq === index && (
-                  <div className="px-6 pb-5 pt-2">
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mr-3">
-                  <span className="text-white font-bold">HP</span>
-                </div>
-                <span className="text-xl font-bold">Hospital Privado CMC</span>
-              </div>
-              <p className="text-gray-400 mb-4">
-                Excelencia en salud con tecnología de vanguardia y un enfoque humano.
-              </p>
-              <div className="flex items-center text-green-400">
-                <Award size={16} className="mr-2" />
-                <span className="text-sm">Acreditado JCI</span>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Servicios</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Agenda de turnos</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Historia clínica</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Estudios médicos</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Telemedicina</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Soporte</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Centro de ayuda</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contacto</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Seguridad</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacidad</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contacto</h3>
-              <div className="space-y-2 text-gray-400">
-                <p>Av. Ejército de los Andes 1500</p>
-                <p>Córdoba, Argentina</p>
-                <p className="mt-2">+54 351 123-4567</p>
-                <p>info@hospitalprivado.com.ar</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Hospital Privado CMC S.A. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
+      <div class="service-card">
+        <h3>Publicaciones & casos</h3>
+        <p>Artículos médicos, investigaciones y casos clínicos destacados.</p>
+        <a href="#" class="btn">Leer artículos</a>
+      </div>
     </div>
-  );
-};
 
-export default App;
-```
+    <div class="guide-card">
+      <img src="https://hospitalprivado.com.ar/frontend/images/home-GP-01.png" alt="Guía del Paciente y la Familia">
+      <div>
+        <h3>PACIENTES</h3>
+        <h3>Guía del <strong>Paciente y la familia</strong></h3>
+        <p>Conocé toda la información necesaria para garantizar tu bienestar durante la estadía en nuestro Hospital.</p>
+      </div>
+    </div>
+
+    <div class="international-section">
+      <h3>PACIENTES INTERNACIONALES</h3>
+      <h3>Vengas de donde vengas, <strong>te sientes como en casa</strong></h3>
+      <p>Desde el corazón de Argentina, estamos presentes en todos los países de la región gracias a acuerdos firmados con las principales aseguradoras internacionales de salud.</p>
+      <a href="#" class="btn">Más información</a>
+    </div>
+
+    <div class="why-us">
+      <h2 class="section-title">¿Por qué elegirnos?</h2>
+      <p>Excelencia profesional, tecnología de vanguardia y atención centrada en el paciente.</p>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Hospital Privado CMC S.A. Todos los derechos reservados.</p>
+      <p class="jci-badge">Acreditado por JCI — Excelencia en atención médica</p>
+    </footer>
+  </div>
+</body>
+</html>
