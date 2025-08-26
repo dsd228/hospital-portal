@@ -11,6 +11,11 @@
     "preview": "vite preview",
     "deploy": "npm run build && npx gh-pages -d dist"
   },
+  {
+  "name": "hospital-portal",
+  "homepage": "https://dsd228.github.io/hospital-portal/"
+}
+
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
     "lucide-react": "^0.542.0",
