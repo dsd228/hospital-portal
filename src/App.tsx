@@ -1,85 +1,47 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import Login from './components/Login';
-import Dashboard from './pages/Dashboard';
-import Especialistas from './pages/Especialistas';
-import FAQ from './pages/FAQ';
-import Notificaciones from './pages/Notificaciones';
-import AgendarTurno from './pages/AgendarTurno';
-import './styles/globals.css';
-import './App.css';
-import AppRouter from "./router/AppRouter";
+import Header from "./components/Header";
+import ServiceCard from "./components/ServiceCard";
+import GuideSection from "./components/GuideSection";
+import InternationalSection from "./components/InternationalSection";
+import WhyUs from "./components/WhyUs";
+import Footer from "./components/Footer";
 
 export default function App() {
-  return <AppRouter />;
-}
-
-
-function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    // Check authentication status
-    const authStatus = localStorage.getItem('isAuthenticated');
-    setIsAuthenticated(authStatus === 'true');
-
-    // Check dark mode preference
-    const darkModePreference = localStorage.getItem('darkMode');
-    const isDark = darkModePreference === 'true';
-    setDarkMode(isDark);
-    
-    // Apply theme to document
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    localStorage.setItem('darkMode', String(newDarkMode));
-    document.documentElement.setAttribute('data-theme', newDarkMode ? 'dark' : 'light');
-  };
-
-  // Mock notification count - in a real app this would come from an API
-  const notificationCount = 3;
-
-  if (!isAuthenticated) {
-    return (
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </Router>
-    );
-  }
-
   return (
-    <Router>
-      <div className="app">
-        <Navigation 
-          darkMode={darkMode} 
-          toggleDarkMode={toggleDarkMode}
-          notificationCount={notificationCount}
+    <div className="max-w-6xl mx-auto p-6">
+      <Header />
+
+      <h2 className="text-3xl font-bold text-center mt-16 mb-8 text-blue-700 dark:text-blue-400">
+        Lo más buscado
+      </h2>
+
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-16">
+        <ServiceCard
+          icon="fa-hospital-user"
+          title="Información útil"
+          text="Todo lo que necesitás saber antes, durante y después de tu visita."
+          link="#"
+          linkText="Acceder"
         />
-        <main className="app-main">
-          <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/especialistas" element={<Especialistas />} />
-            <Route path="/turnos" element={<div>Turnos (Coming Soon)</div>} />
-            <Route path="/turnos/nuevo" element={<AgendarTurno />} />
-            <Route path="/estudios" element={<div>Estudios (Coming Soon)</div>} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/notificaciones" element={<Notificaciones />} />
-            <Route path="/perfil" element={<div>Perfil (Coming Soon)</div>} />
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
-            <Route path="*" element={<Navigate to="/dashboard" replace />} />
-          </Routes>
-        </main>
+        <ServiceCard
+          icon="fa-user-md"
+          title="Profesionales"
+          text="Buscá y contactá al especialista ideal para tu caso."
+          link="#"
+          linkText="Ver médicos"
+        />
+        <ServiceCard
+          icon="fa-book-medical"
+          title="Publicaciones"
+          text="Investigaciones, casos clínicos y avances médicos."
+          link="#"
+          linkText="Leer"
+        />
       </div>
-    </Router>
+
+      <GuideSection />
+      <InternationalSection />
+      <WhyUs />
+      <Footer />
+    </div>
   );
 }
-
-export default App;
