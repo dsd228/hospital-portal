@@ -1,7 +1,7 @@
 {
   "name": "hospital-portal",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "homepage": "https://dsd228.github.io/hospital-portal",
   "scripts": {
@@ -9,13 +9,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && npx gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
-  {
-  "name": "hospital-portal",
-  "homepage": "https://dsd228.github.io/hospital-portal/"
-}
-
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
     "lucide-react": "^0.542.0",
@@ -23,20 +19,6 @@
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.8.2"
   },
-{
-  "name": "hospital-portal",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
-  "homepage": "https://dsd228.github.io/hospital-portal"
-}
-
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@types/react": "^19.1.10",
@@ -51,12 +33,4 @@
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2"
   }
-
-  "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview",
-  "deploy": "gh-pages -d dist"
-}
-
 }
