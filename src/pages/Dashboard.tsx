@@ -16,6 +16,15 @@ import turnosData from '../data/turnos.json';
 import estudiosData from '../data/estudios.json';
 import mensajesData from '../data/mensajes.json';
 import './Dashboard.css';
+export default function Dashboard() {
+  return (
+    <div>
+      <h1 className="text-2xl font-bold mb-4">Panel del Hospital</h1>
+      <p>Bienvenido al sistema de gestión hospitalaria.</p>
+    </div>
+  );
+}
+
 
 const Dashboard: React.FC = () => {
   const [turnos, setTurnos] = useState<Turno[]>([]);
